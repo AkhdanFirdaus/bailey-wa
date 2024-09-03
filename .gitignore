@@ -4,3 +4,4 @@ wa-logs.txt
 dist
 node_modules
 session
+.env
