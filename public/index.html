@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Hola Diablos</h1>
+  <hr>
+  <li id="messages"></li>
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js" integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous"></script>
+  <script>
+    const socket = io();
+
+    const messages = document.getElementById('messages');
+
+    socket.on('message in', (payload) => {
+      console.log(payload)
+      const item = document.createElement('li');
+      item.textContent = payload.sender + ": " + payload.message;
+      messages.appendChild(item);
+      window.scrollTo(0, document.body.scrollHeight);
+    })
+  </script>
+</body>
+</html>
